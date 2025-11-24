@@ -1,17 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net9.0;net9.0-android;net9.0-ios;net9.0-maccatalyst</TargetFrameworks>
-    <TargetFrameworks Condition="!$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net9.0-macos</TargetFrameworks>
-    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net9.0-windows10.0.19041.0</TargetFrameworks>
+    <TargetFrameworks>net10.0;net10.0-android;net10.0-ios;net10.0-maccatalyst</TargetFrameworks>
+    <TargetFrameworks Condition="!$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net10.0-macos</TargetFrameworks>
+    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net10.0-windows10.0.19041.0</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <SingleProject>true</SingleProject>
     <AssemblyName>Plugin.InAppBilling</AssemblyName>
     <RootNamespace>Plugin.InAppBilling</RootNamespace>
     <Product>$(AssemblyName) ($(TargetFramework))</Product>
-    <AssemblyVersion>9.0.0.0</AssemblyVersion>
-    <AssemblyFileVersion>9.0.0.0</AssemblyFileVersion>
-    <Version>9.0.0.0</Version>
-    <Authors>James Montemagno</Authors>
+    <AssemblyVersion>10.0.0.0</AssemblyVersion>
+    <AssemblyFileVersion>10.0.0.0</AssemblyFileVersion>
+    <Version>10.0.0.0</Version>
+    <Authors>Steve Graddy</Authors>
     <IsPackable>True</IsPackable>
     <PackageId>Plugin.InAppBilling</PackageId>
     <PackOnBuild>true</PackOnBuild>
@@ -20,9 +20,9 @@
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <Owners>JamesMontemagno</Owners>
+    <Owners>SteveGraddy</Owners>
     <NoWarn>CA1422;CA1416</NoWarn>
-    <PackageProjectUrl>https://github.com/jamesmontemagno/InAppBillingPlugin</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/Orgbrat/InAppBillingPlugin</PackageProjectUrl>
     <Summary>.NET MAUI, and Windows plugin to In-App Billing.</Summary>
     <PackageTags>.net maui, macos, windows, xamarin, xamarin.forms, android, ios, uwp, windows phone, In-App Billing, purchases, plugin</PackageTags>
     <Title>In-App Billing Plugin for .NET MAUI and Windows</Title>
@@ -30,9 +30,9 @@
       .NET MAUI and Windows Plugin to In-App Billing. Get item information, purchase items, and restore purchases with a cross-platform API.
       Read the full documenation on the projects page.
     </Description>
-    <Copyright>Copyright 2024</Copyright>
-    <RepositoryUrl>https://github.com/jamesmontemagno/InAppBillingPlugin</RepositoryUrl>
-    <PackageReleaseNotes>See: https://github.com/jamesmontemagno/InAppBillingPlugin</PackageReleaseNotes>
+    <Copyright>Copyright 2025</Copyright>
+    <RepositoryUrl>https://github.com/Orgbrat/InAppBillingPlugin</RepositoryUrl>
+    <PackageReleaseNotes>See: https://github.com/Orgbrat/InAppBillingPlugin</PackageReleaseNotes>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <NeutralLanguage>en</NeutralLanguage>
@@ -67,7 +67,7 @@
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
   </PropertyGroup>
 
-  
+
   <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
   </ItemGroup>
@@ -82,7 +82,7 @@
     <Compile Remove="**\**\*.ios.cs" />
     <None Include="**\**\*.ios.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
   </ItemGroup>
-  
+
   <ItemGroup Condition="$(TargetFramework.StartsWith('net')) == true AND $(TargetFramework.Contains('-maccatalyst')) != true">
     <Compile Remove="**\**\*.maccatalyst.cs" />
     <None Include="**\**\*.maccatalyst.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
@@ -101,11 +101,11 @@
   </ItemGroup>
 
 
-<ItemGroup Condition=" $(TargetFramework.Contains('net9.0-android')) ">
-    <PackageReference Include="Microsoft.Maui.Essentials" Version="9.0.81" />
+<ItemGroup Condition=" $(TargetFramework.Contains('net10.0-android')) ">
+    <PackageReference Include="Microsoft.Maui.Essentials" Version="10.0.10" />
   </ItemGroup>
 
-  
+
   <ItemGroup Condition="$(TargetFramework.StartsWith('net')) == true AND $(TargetFramework.Contains('-android')) != true">
     <Compile Remove="**\**\*.android.cs" />
     <None Include="**\**\*.android.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
@@ -121,11 +121,11 @@
     <Compile Remove="**\*.net.cs" />
     <None Include="**\*.net.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
   </ItemGroup>
-  
+
   <!--<ItemGroup Condition=" $(TargetFramework.Contains('-windows')) ">
     <Compile Include="**\*.uwp.cs" />
   </ItemGroup>
-  
+
   <ItemGroup Condition=" $(TargetFramework.Contains('-android')) ">
     <Compile Include="**\*.android.cs" />
     <PackageReference Include="Microsoft.Maui.Essentials" Version="$(MauiVersion)" />
