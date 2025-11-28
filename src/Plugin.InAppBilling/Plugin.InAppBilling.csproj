@@ -150,5 +150,16 @@
     <None Include="..\..\art\icon.png" PackagePath="icon.png" Pack="true" />
     <None Include="..\..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net10.0-android'">
+    <PackageReference Include="Xamarin.AndroidX.Lifecycle.Runtime">
+      <Version>2.9.4</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.Lifecycle.ViewModelSavedState">
+      <Version>2.9.4</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.Lifecycle.ViewModelSavedState.Android">
+      <Version>2.9.4</Version>
+    </PackageReference>
+  </ItemGroup>
 
 </Project>
